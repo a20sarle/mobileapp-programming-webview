@@ -22,10 +22,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void showExternalWebPage(){
         // TODO: Add your code for showing external web page here
+        //Implement `showExternalWebPage()`. Hint: `loadUrl()`.
+        WebView webView = new WebView(this); // external
+        setContentView(webView); // external
+        myWebView.loadUrl("https://his.se/"); //external
     }
 
     public void showInternalWebPage(){
         // TODO: Add your code for showing internal web page here
+        //Implement `showInternalWebPage()`. Hint: `loadUrl()`.
+        WebViewClient myWebViewClient = new WebViewClient(); //internal
+        myWebView.setWebViewClient(myWebViewClient); //internal
+        myWebView.loadUrl("https://his.se/"); //internal
     }
 
     @Override
@@ -43,12 +51,9 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        //Implement `showExternalWebPage()` and `showInternalWebPage()`. Hint: `loadUrl()`.
-        //WebView webView = new WebView(this); // external
-        //setContentView(webView); // external
-        WebViewClient myWebViewClient = new WebViewClient(); //internal
-        myWebView.setWebViewClient(myWebViewClient); //internal
-        myWebView.loadUrl("https://his.se/"); //internal
+
+
+
 
 
 
@@ -104,11 +109,13 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_external_web) {
             Log.d("==>","Will display external web page");
+            showExternalWebPage();
             return true;
         }
 
         if (id == R.id.action_internal_web) {
             Log.d("==>","Will display internal web page");
+            showInternalWebPage();
             return true;
         }
 
