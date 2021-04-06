@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -43,9 +44,13 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
 
         //Implement `showExternalWebPage()` and `showInternalWebPage()`. Hint: `loadUrl()`.
-        WebView webView = new WebView(this);
-        setContentView(webView);
-        webView.loadUrl("https://his.se/");
+        //WebView webView = new WebView(this); // external
+        //setContentView(webView); // external
+        WebViewClient myWebViewClient = new WebViewClient(); //internal
+        myWebView.setWebViewClient(myWebViewClient); //internal
+        myWebView.loadUrl("https://his.se/"); //internal
+
+
 
         /*
         * Rename your App. Tip: Values->Strings
