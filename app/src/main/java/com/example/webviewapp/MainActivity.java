@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -14,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
+
+    //Create a private member variable called `myWebView` of the type `WebView` and
     private WebView myWebView;
 
     public void showExternalWebPage(){
@@ -31,7 +34,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Locate the WebView element created in step 1 using the WebView ID
+        //...instantiate it in `onCreate()`. Hint: `findViewById()`
         WebView myWebView=findViewById(R.id.my_webview);
+
+        //Enable Javascript execution in your WebViewClient. Hint: `getSettings()` and `setJavaScriptEnabled()`
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
 
         /*
         * Rename your App. Tip: Values->Strings
