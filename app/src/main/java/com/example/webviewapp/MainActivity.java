@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
+        //Implement `showExternalWebPage()` and `showInternalWebPage()`. Hint: `loadUrl()`.
+        WebView webView = new WebView(this);
+        setContentView(webView);
+        webView.loadUrl("https://his.se/");
+
         /*
         * Rename your App. Tip: Values->Strings
         * Enable Internet access for your App. Tip: Manifest
@@ -67,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
            one (1) screenshot showing your external web page.
         */
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        //FloatingActionButton fab = findViewById(R.id.fab);
+        //fab.setOnClickListener(new View.OnClickListener() {
+        //@Override
+        //public void onClick(View view) {
+        //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        //.setAction("Action", null).show();
+        //}
+        //});
     }
 
     @Override
