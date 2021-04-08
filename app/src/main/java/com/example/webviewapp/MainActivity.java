@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         //Implement `showInternalWebPage()`. Hint: `loadUrl()`.
         WebViewClient myWebViewClient = new WebViewClient(); //internal
         myWebView.setWebViewClient(myWebViewClient); //internal
-        myWebView.loadUrl("https://his.se/"); //internal
+        myWebView.loadUrl("file:///android_asset/assignment2.html"); //internal
     }
 
     @Override
