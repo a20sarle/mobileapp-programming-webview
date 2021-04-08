@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         //Implement `showExternalWebPage()`. Hint: `loadUrl()`.
         WebView webView = new WebView(this); // external
         setContentView(webView); // external
-        myWebView.loadUrl("https://his.se/"); //external
+        myWebView.loadUrl("https://www.his.se/"); //external
     }
 
     public void showInternalWebPage(){
