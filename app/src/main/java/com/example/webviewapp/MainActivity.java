@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Locate the WebView element created in step 1 using the WebView ID
         //...instantiate it in `onCreate()`. Hint: `findViewById()`
-        WebView myWebView=findViewById(R.id.my_webview);
+        //WebView myWebView=findViewById(R.id.my_webview);
+        myWebView=findViewById(R.id.my_webview);
 
         //Enable Javascript execution in your WebViewClient. Hint: `getSettings()` and `setJavaScriptEnabled()`
         WebSettings webSettings = myWebView.getSettings();
