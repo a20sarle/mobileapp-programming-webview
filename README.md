@@ -1,43 +1,46 @@
 
-# Rapport
+# Rapport för uppgift 2: WebView
 
-**Skriv din rapport här!**
+Applikations namnet ändrades genom att byta ut namnet i den första string:en i res>vlues>strings.
 
-_Du kan ta bort all text som finns sedan tidigare_.
+Tillgång till internet accepterades genom användnig av kodsnutten ```<uses-permission android:name="android.permission.INTERNET" />``` i filen AndroidManifest.xml.
 
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+Genom att ersätta textView-elementet med WebView-elementet nedan skapades den efterfrågade WebView:n. Detta gjordes  i res>layout>content_main.xml. För att ändra WebView:ns ID byttes ```android:id="@+id/webview``` ut till ```android:id="@+id/my_webview"```.
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
+<WebView
+        android:id="@+id/my_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+I samband med kodraderna nedan skapades Private Member Variable med typen WebView där den sista kodraden vilken lokaliserar WebView-elementet lades i funktionen OnCreate().
+```
+import android.webkit.WebView;
+private WebView myWebView;
+myWebView=findViewById(R.id.my_webview);
+```
 
-![](android.png)
-![](assignment2-external.jpg)
+För att tillåta JavaScript användes koden nedan i MainActivity.java.
+```
+import android.webkit.WebSettings;
+WebSettings webSettings = myWebView.getSettings();
+webSettings.setJavaScriptEnabled(true);
+```
 
-Läs gärna:
+För att skapa assignment2.html skapades först en ny asset-mapp och därefter skapades .html filen. Genom koden nedan länkades sedan den interna sidan till appen och för att kunna visa allt innehåll ändrades även marginTop i content_main.xml.
+```
+WebViewClient myWebViewClient = new WebViewClient(); //internal
+myWebView.setWebViewClient(myWebViewClient); //internal
+myWebView.loadUrl("file:///android_asset/assignment2.html"); //internal
+```
+```
+android:layout_marginTop="72dp"
+```
+assignment2.html visades slutligen på följande vis i applikationen.
+![](assignment2-internal.png)
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+Genom kodraden ```myWebView.loadUrl("https://www.his.se/");``` kunde även den externa sidan visas i applikationen vilken tillslut visades på följande vis.
+![](assignment2-external.png)
+
+Länkarna för den interna och externa sidan lades i var sina funktioner som sedan kallas då användaren klickar på något av manyvalen.
